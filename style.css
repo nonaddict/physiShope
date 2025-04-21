@@ -32,10 +32,12 @@ h1 {
   cursor: pointer;
 }
 
-#searchBtn:hover {
+#searchBtn:hover{
   background-color: #005fa3;
 }
-
+#searchBtn:focus, #searchInput:focus, h1:focus{
+  outline:none;
+}
 #results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
