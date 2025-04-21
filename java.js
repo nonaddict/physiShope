@@ -32,22 +32,38 @@ products()
 
     displayNames(allProducts);
 
-    // Filter function (live search)
-    function toFilter(value) {
-      const searchValue = value.trim().toLowerCase();
-      if (!searchValue) return allProducts;
+   // Filter function (live search)
+function toFilter(value) {
+  const searchValue = value.trim().toLowerCase();
+  if (!searchValue) return allProducts;
 
-      const inputWords = searchValue.split(/\s+/);
+  const inputWords = searchValue.split(/\s+/);
 
-      return allProducts.filter(product => {
-        const productWords = product.name.trim().toLowerCase().split(/\s+/);
-        return productWords.some(productWord =>
-          inputWords.some(inputWord =>
-            productWord.startsWith(inputWord)
-          )
-        );
-      });
+  return allProducts.filter(product => {
+    const words = product.name.trim().toLowerCase().split(/\s+/); // Split name into words
+
+    // Find the starting index where the product words begin to match
+    let target = -1;
+    for (let i = 0; i < words.length; i++) {
+      if (words[i].startsWith(inputWords[0])) {
+        target = i;
+        break; // Optional: break early on first match
+      }
     }
+
+    // If no starting point was found, skip this product
+    if (target === -1 || target + inputWords.length > words.length) return false;
+
+    // Now check all input words match in sequence
+    for (let j = 0; j < inputWords.length; j++) {
+      if (!words[j + target].startsWith(inputWords[j])) {
+        return false; // Early exit on mismatch
+      }
+    }
+
+    return true; // All input words matched in order
+  });
+}
 
     // Search function (returns only the first match)
     function toSearch(value) {
