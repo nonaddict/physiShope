@@ -33,32 +33,46 @@ products()
     displayNames(allProducts);
 
     // Filter function (live search)
-    function toFilter() {
-      return allProducts.filter(product =>
-        product.name.toLowerCase().includes(input.value.toLowerCase())
-      );
+    function toFilter(value) {
+      const searchValue = value.trim().toLowerCase();
+      if (!searchValue) return allProducts;
+
+      const inputWords = searchValue.split(/\s+/);
+
+      return allProducts.filter(product => {
+        const productWords = product.name.trim().toLowerCase().split(/\s+/);
+        return productWords.some(productWord =>
+          inputWords.some(inputWord =>
+            productWord.startsWith(inputWord)
+          )
+        );
+      });
     }
 
     // Search function (returns only the first match)
-    function toSearch() {
-      const filteredNames = toFilter();
+    function toSearch(value) {
+      const filteredNames = toFilter(value);
       return filteredNames.length > 0 ? [filteredNames[0]] : [];
     }
 
     // Listen for typing
     input.addEventListener('input', () => {
-      displayNames(toFilter());
+      displayNames(toFilter(input.value));
     });
 
-    // Listen for Enter key
+    // Listen for Enter and Space keys
     input.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
-        displayNames(toSearch());
+        displayNames(toSearch(input.value));
+      }
+      if (event.key === ' ') {
+        // Just filter again on space
+        displayNames(toFilter(input.value));
       }
     });
 
-    // Listen for search button click
+    // Search button click
     searchButton.addEventListener('click', () => {
-      displayNames(toSearch());
+      displayNames(toSearch(input.value));
     });
   });
