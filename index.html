@@ -28,22 +28,46 @@
   <meta property="og:description" content="Shop smarter. Find trending and top-rated products from Amazon, eBay, and other marketplaces on physiShope. Updated daily.">
   <meta property="og:url" content="https://nonaddict.github.io/trial-store/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://nonaddict.github.io/trial-store/icons8-done-48.png">
+  <meta property="og:image" content="https://nonaddict.github.io/trial-store/icons8-done-48.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="physiShope – Top-Rated Deals from Amazon, eBay & More">
   <meta name="twitter:description" content="Discover trending gadgets and best-rated products from across the web. All curated on physiShope.">
-  <meta name="twitter:image" content="https://nonaddict.github.io/trial-store/icons8-done-48.png">
+  <meta name="twitter:image" content="https://nonaddict.github.io/trial-store/icons8-done-48.webp">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://nonaddict.github.io/trial-store/icons8-done-48.png">
+  <link rel="icon" type="image/webp" href="https://nonaddict.github.io/trial-store/icons8-done-48.webp">
 
   <!-- Google Fonts + Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- Styles -->
   <link rel="stylesheet" href="./style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YY1XHLTT6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0YY1XHLTT6');
+</script>
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "physiShope",
+    "url": "https://nonaddict.github.io/trial-store/",
+    "description": "Top-rated gadgets from Amazon, eBay, and more.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "physiShope"
+    }
+  }
+  </script>
 </head>
 <body>
   <h1>Top rated gadgets on eBay</h1>
@@ -60,6 +84,7 @@
   <hr>
   physiShope &#169;
 
-  <script type="module" src="java.js"></script>
+  <!-- JavaScript (deferred for non-blocking render) -->
+  <script type="module" src="java.js" defer></script>
 </body>
 </html>
