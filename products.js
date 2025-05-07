@@ -1,7 +1,7 @@
 // products.js
 const products = async () => {
     try {
-      const response = await fetch('https://backend-1-4kyz.onrender.com/products', {
+      const response = await fetch('https://backend-q7ou.onrender.com/products', {
         method: 'GET',
         mode: 'cors'
       });
